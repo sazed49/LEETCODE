@@ -3,19 +3,14 @@ from typing import List
 
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        hash={}
+        #print(hash)
         for i in range(len(nums)):
-            print({"i"},i)
-
-            print({"num"},nums[i])
-            print({"i+k"},i+k)
-            print({"len"},len(nums))
-            if (i+k)>len(nums):
-                return False
-            elif nums[i+k]==nums[i]:
+            if nums[i] in hash and abs(i-hash[nums[i]]<=k):
                 return True
-            else: continue
+            hash[nums[i]] = i
+            #print(hash)
         return False
-
 
 
 
